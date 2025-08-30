@@ -1,0 +1,108 @@
+---
+# Preamble
+
+## Author
+author:
+  name: Шубнякова Дарья НКНбд-01-22
+  email: 1132226452@pfur.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+## Title
+title: Лабораторная работа №3
+subtitle: Моделирование стохастических процессов
+license: CC BY
+## Generic options
+lang: ru-RU
+crossref:
+  fig-title: "Рисунок"
+  tbl-title: "Таблица"
+  lst-title: "Листинг"
+## Formats
+format:
+### Pdf output format
+  beamer:
+    toc: true
+    toc-title: Содержание
+    number-sections: true
+    colorlinks: false
+    toc-depth: 2
+    slide-level: 2
+    aspectratio: 169
+    section-titles: true
+    theme: metropolis
+    theme-options:
+      - progressbar=frametitle
+      - sectionpage=progressbar
+      - numbering=fraction
+    pdf-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{fontspec}
+        \setmainfont{Times New Roman}
+        \setsansfont{Arial}
+        \setmonofont{Courier New}
+        \usepackage{polyglossia}
+        \setdefaultlanguage{russian}
+        \setotherlanguage{english}
+        \usepackage{caption}
+        \captionsetup[figure]{name=Рисунок}
+
+### Html output
+  revealjs:
+    transition: slide
+    margin: 0.2
+    smaller: false
+    output-ext: html
+    theme: beige
+    logo: _resources/image/logo_rudn.png
+---
+
+# Вводная часть
+
+## Цели и задачи
+
+Познакомиться с однолинейными СМО с двумя видами накопителей:
+* с накопителем конечной ёмкости R
+* с накопителем бесконечной ёмкости
+Рассмотреть теоретические сведения и реализовать их на практике.
+
+* Реализовать модель на NS-2
+* Построить график в GNUplot
+* Отредактировать его до желаемого результата
+
+# Основная часть
+
+## Выполнение лабораторной работы
+
+Создаем модель по предложенному в лабораторной работе коду, который будет прикреплен в релизе данной лабоаторной работы на GitHub, т.к. он довольно объёмный. Создаем так же файл graph_plot и открываем на редактирование, после чего делаем его исполняемым
+
+![Создание модели](image/1.png){width=70%}
+
+## Предварительно мы вставили нужный нам код из лабораторной работы.
+
+![](image/2.png){width=70%}
+
+## Запускаем модель, видим показатели теоретической вероятности потери и теоретической средней длины очереди, а затем запускаем файл graph_plot, чтобы получить наглядный результат на графике qm.pdf.
+
+![](image/3.png){width=70%}
+
+## Получаем этот файл и видим данный график, нам же надо сделать его таким же, каким он представлен в конце лабораторной работы.
+
+![](image/4.png){width=70%}
+
+## Вносим корректировки, меняем цвет линий.
+
+![](image/5.png){width=70%}
+
+## Запускаем скрипт снова и получаем желаемый результат.
+
+![](image/6.png){width=70%}
+
+# Результаты
+
+Мы получили предварительные сведения по двум видам СМО. Мы смоделировали поведение однолинейной СМО М|M|1 с накопителем бесконечной ёмкости, а также апроксимировали результаты с помощью сплайнов и кривых Безье, приобрели навыки работы с GNUplot.
+
