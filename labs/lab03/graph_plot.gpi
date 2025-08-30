@@ -1,0 +1,19 @@
+#!/usr/bin/gnuplot -persist
+# задаём текстовую кодировку,
+# тип терминала, тип и размер шрифта
+set encoding utf8
+set term pdfcairo font "Arial,9"
+# задаём выходной файл графика
+set out 'qm.pdf'
+# задаём название графика
+set title "График средней длины очереди"
+# задаём стиль линии
+set style line 2
+# подписи осей графика
+set xlabel "t"
+set ylabel "Пакеты"
+# построение графика, используя значения
+# 1-го и 5-го столбцов файла qm.out
+plot "qm.out" using ($1):($5) with lines title "Размер очереди (в пакетах)" lc "red",\
+     "qm.out" using ($1):($5) smooth csplines title " Приближение сплайном " lc "green", \
+     "qm.out" using ($1):($5) smooth bezier title " Приближение Безье " lc "blue"
