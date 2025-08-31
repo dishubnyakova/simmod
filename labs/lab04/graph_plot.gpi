@@ -1,0 +1,16 @@
+#!/usr/bin/gnuplot -persist
+# задаём текстовую кодировку,
+# тип терминала, тип и размер шрифта
+set encoding utf8
+set term pdfcairo font "Arial,9"
+# задаём выходной файл графика
+set out 'qm_avg.pdf'
+# задаём название графика
+set title "Queue-length"
+# задаём стиль линии
+set style line 2
+# подписи осей графика
+set xlabel "t[s]"
+set ylabel "CWND[pkt]"
+# построение графика, используя значения
+plot "temp.a" using ($1):($2) with lines title "Change of size of average  queue-length on link (R1-R2) when N=20, qmin=75, qmax=150" lc "black"
