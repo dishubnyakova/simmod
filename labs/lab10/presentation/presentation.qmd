@@ -1,0 +1,113 @@
+---
+# Preamble
+
+## Author
+author:
+  name: Шубнякова Дарья НКНбд-01-22
+  email: 1132226452@pfur.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+## Title
+title: Лабораторная работа №10
+subtitle: Задача об обедающих мудрецах
+license: CC BY
+## Generic options
+lang: ru-RU
+crossref:
+  fig-title: "Рисунок"
+  tbl-title: "Таблица"
+  lst-title: "Листинг"
+## Formats
+format:
+### Pdf output format
+  beamer:
+    toc: true
+    toc-title: Содержание
+    number-sections: true
+    colorlinks: false
+    toc-depth: 2
+    slide-level: 2
+    aspectratio: 169
+    section-titles: true
+    theme: metropolis
+    theme-options:
+      - progressbar=frametitle
+      - sectionpage=progressbar
+      - numbering=fraction
+    pdf-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{fontspec}
+        \setmainfont{Times New Roman}
+        \setsansfont{Arial}
+        \setmonofont{Courier New}
+        \usepackage{polyglossia}
+        \setdefaultlanguage{russian}
+        \setotherlanguage{english}
+        \usepackage{caption}
+        \captionsetup[figure]{name=Рисунок}
+
+### Html output
+  revealjs:
+    transition: slide
+    margin: 0.2
+    smaller: false
+    output-ext: html
+    theme: beige
+    logo: _resources/image/logo_rudn.png
+---
+
+# Вводная часть
+
+## Цели и задачи
+
+Ознакомиться с задачей об обедающих мудрецах и реализовать модель в CPNTools.
+
+Вычислить пространство состояний. Сформировать отчёт о пространстве состояний и проанализировать его. Построить граф пространства состояний.
+
+# Основная часть
+
+## Выполнение лабораторной работы
+
+### Рисуем граф сети. Для этого с помощью контекстного меню создаём новую сеть, добавляем позиции, переходы и дуги (рис. 10.1).
+Начальные данные:
+– позиции: мудрец размышляет (philosopher thinks), мудрец ест (philosopher eats),
+палочки находятся на столе (sticks on the table)
+– переходы: взять палочки (take sticks), положить палочки (put sticks).
+
+![](image/1.png){width=70%}
+
+## В меню задаём новые декларации модели: типы фишек, начальные значения позиций, выражения для дуг
+
+### – n — число мудрецов и палочек (n = 5);
+– p — фишки, обозначающие мудрецов, имеют перечисляемый тип PH от 1 до n; – s — фишки, обозначающие палочки, имеют перечисляемый тип ST от 1 до n;
+– функция ChangeS(p) ставит в соответствие мудрецам палочки (возвращает но-
+мера палочек, используемых мудрецами).
+
+![](image/2.png){width=70%}
+
+## Расставляем оставшиеся данные для функционирования модели.
+
+![](image/3.png){width=70%}
+
+## В результате получаем работающую модель. После запуска модели наблюдаем, что одновременно палочками могут воспользоваться только два из пяти мудрецов.
+
+![](image/4.png){width=70%}
+
+## Выполняем упражнение. Строим граф пространства состояний.
+
+![](image/5.png){width=70%}
+
+## А так же получаем отчет о пространстве состояний.
+
+![](image/6.png){width=70%}
+
+# Результаты
+
+Мы ознакомились с моделью "Задача об обедающих мудрецах". Ознакомились с базовыми аспектами работы в CPNTools.
+
+Получили отчет по работе модели.

@@ -1,0 +1,206 @@
+---
+# Preamble
+
+## Author
+author:
+  - name: Шубнякова Дарья НКНбд-01-22
+    email: 1132226452@pfur.ru
+    affiliation:
+      - name: Российский университет дружбы народов
+        country: Российская Федерация
+        postal-code: 117198
+        city: Москва
+        address: ул. Миклухо-Маклая, д. 6
+
+## Title
+title: "Лабораторная работа №10"
+subtitle: "Задача об обедающих мудрецах"
+license: "CC BY"
+
+## Generic options
+lang: ru-RU
+number-sections: true
+toc: true
+toc-title: "Содержание"
+toc-depth: 2
+
+## Formats
+format:
+  ### Pdf output format
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: false
+    toc-depth: 2
+    documentclass: article
+    papersize: a4
+    fontsize: 12pt
+    linestretch: 1.5
+    babel-lang: russian
+    babel-otherlangs: english
+    indent: true
+    header-includes: |
+      \usepackage{indentfirst}
+      \usepackage{float}
+      \floatplacement{figure}{H}
+      \usepackage{fontspec}
+      \setmainfont{Times New Roman}
+      \usepackage{titling}
+      \renewcommand{\maketitlehooka}{\null\vfill}
+      \renewcommand{\maketitlehookd}{\vfill\null\newpage}
+
+  ### Docx output format
+  docx:
+    toc: true
+    number-sections: true
+    toc-depth: 2
+---
+
+\newpage
+
+# Цель работы
+
+Ознакомиться с задачей об обедающих мудрецах и реализовать модель в CPNTools.
+
+# Задание
+
+Вычислить пространство состояний. Сформировать отчёт о пространстве состояний и проанализировать его. Построить граф пространства состояний.
+
+# Теоретическое введение
+
+
+Задача об обедающих мудрецах — классическая задача о блокировках и синхро- низации процессов. Пять мудрецов сидят за круглым столом и могут пребывать в двух состояниях — думать и есть. Между соседями лежит одна палочка для еды. Для приёма пищи необходимы две палочки. Палочки — пересекающийся ресурс. Необходимо синхро- низировать процесс еды так, чтобы мудрецы не умерли с голода.
+
+# Выполнение лабораторной работы
+
+Рисуем граф сети. Для этого с помощью контекстного меню создаём новую сеть, добавляем позиции, переходы и дуги (рис. 10.1).
+Начальные данные:
+– позиции: мудрец размышляет (philosopher thinks), мудрец ест (philosopher eats),
+палочки находятся на столе (sticks on the table)
+– переходы: взять палочки (take sticks), положить палочки (put sticks)([рис. @fig-001]).
+
+![](image/1.png){#fig-001 width=70%}
+
+В меню задаём новые декларации модели: типы фишек, начальные значения позиций, выражения для дуг:
+– n — число мудрецов и палочек (n = 5);
+– p — фишки, обозначающие мудрецов, имеют перечисляемый тип PH от 1 до n; – s — фишки, обозначающие палочки, имеют перечисляемый тип ST от 1 до n;
+– функция ChangeS(p) ставит в соответствие мудрецам палочки (возвращает но-
+мера палочек, используемых мудрецами); по условию задачи мудрецы сидят по кругу и мудрец p(i) может взять i и i + 1 палочки, поэтому функция ChangeS(p) определяется следующим образом:
+     fun ChangeS (ph(i))=
+     1`st(i)++st(if = n then 1 else i+1)([рис. @fig-002]).
+
+![](image/2.png){#fig-002 width=70%}
+
+
+Расставляем оставшиеся данные для функционирования модели([рис. @fig-003]).
+
+![](image/3.png){#fig-003 width=70%}
+
+В результате получаем работающую модель. После запуска модели наблюдаем, что одновременно палочками могут воспользоваться только два из пяти мудрецов([рис. @fig-004]).
+
+![](image/4.png){#fig-004 width=70%}
+
+Выполняем упражнение. Строим граф пространства состояний([рис. @fig-005]).
+
+![](image/5.png){#fig-005 width=70%}
+
+А так же получаем отчет о пространстве состояний([рис. @fig-006]).
+
+![](image/6.png){#fig-006 width=70%}
+
+# Выводы
+
+Мы ознакомились с моделью "Задача об обедающих мудрецах". Углубились в базовые аспекты работы в CPNTools.
+
+Получили отчет по работе модели.
+
+```
+CPN Tools state space report for:
+<unsaved net>
+Report generated: Sat Sep 13 18:03:22 2025
+
+
+ Statistics
+------------------------------------------------------------------------
+
+  State Space
+     Nodes:  11
+     Arcs:   30
+     Secs:   0
+     Status: Full
+
+  Scc Graph
+     Nodes:  1
+     Arcs:   0
+     Secs:   0
+
+
+ Boundedness Properties
+------------------------------------------------------------------------
+
+  Best Integer Bounds
+                             Upper      Lower
+     philosopher'philosopher_eats 1
+                             2          0
+     philosopher'philosopher_thinks 1
+                             5          3
+     philosopher'stick_on_the_table 1
+                             5          1
+
+  Best Upper Multi-set Bounds
+     philosopher'philosopher_eats 1
+                         1`ph(1)++
+1`ph(2)++
+1`ph(3)++
+1`ph(4)++
+1`ph(5)
+     philosopher'philosopher_thinks 1
+                         1`ph(1)++
+1`ph(2)++
+1`ph(3)++
+1`ph(4)++
+1`ph(5)
+     philosopher'stick_on_the_table 1
+                         1`st(1)++
+1`st(2)++
+1`st(3)++
+1`st(4)++
+1`st(5)
+
+  Best Lower Multi-set Bounds
+     philosopher'philosopher_eats 1
+                         empty
+     philosopher'philosopher_thinks 1
+                         empty
+     philosopher'stick_on_the_table 1
+                         empty
+
+
+ Home Properties
+------------------------------------------------------------------------
+
+  Home Markings
+     All
+
+
+ Liveness Properties
+------------------------------------------------------------------------
+
+  Dead Markings
+     None
+
+  Dead Transition Instances
+     None
+
+  Live Transition Instances
+     All
+
+
+ Fairness Properties
+------------------------------------------------------------------------
+       philosopher'put_sticks 1
+                         Impartial
+       philosopher'take_sticks 1
+                         Impartial
+```
+
