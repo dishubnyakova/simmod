@@ -1,0 +1,110 @@
+---
+# Preamble
+
+## Author
+author:
+  name: Шубнякова Дарья НКНбд-01-22
+  email: 1132226452@pfur.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+## Title
+title: Лабораторная работа №12
+subtitle: Пример моделирования простого протокола передачи данных
+license: CC BY
+## Generic options
+lang: ru-RU
+crossref:
+  fig-title: "Рисунок"
+  tbl-title: "Таблица"
+  lst-title: "Листинг"
+## Formats
+format:
+### Pdf output format
+  beamer:
+    toc: true
+    toc-title: Содержание
+    number-sections: true
+    colorlinks: false
+    toc-depth: 2
+    slide-level: 2
+    aspectratio: 169
+    section-titles: true
+    theme: metropolis
+    theme-options:
+      - progressbar=frametitle
+      - sectionpage=progressbar
+      - numbering=fraction
+    pdf-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{fontspec}
+        \setmainfont{Times New Roman}
+        \setsansfont{Arial}
+        \setmonofont{Courier New}
+        \usepackage{polyglossia}
+        \setdefaultlanguage{russian}
+        \setotherlanguage{english}
+        \usepackage{caption}
+        \captionsetup[figure]{name=Рисунок}
+
+### Html output
+  revealjs:
+    transition: slide
+    margin: 0.2
+    smaller: false
+    output-ext: html
+    theme: beige
+    logo: _resources/image/logo_rudn.png
+---
+
+# Вводная часть
+
+## Цели и задачи
+
+Рассмотрим ненадёжную сеть передачи данных, состоящую из источника, получате- ля.
+Перед отправкой очередной порции данных источник должен получить от полу- чателя подтверждение о доставке предыдущей порции данных.
+Считаем, что пакет состоит из номера пакета и строковых данных. Передавать будем сообщение «Modelling and Analysis by Means of Coloured Petry Nets», разбитое по 8 символов.
+
+Вычислить пространство состояний. Сформировать отчёт о пространстве состояний и проанализировать его. Построить граф пространства состояний.
+
+# Основная часть
+
+## Выполнение лабораторной работы
+
+Составляем начальный граф.
+
+![](image/1.png){width=70%}
+
+## Задаем состояние Send имеет тип INTxDATA и следующую начальную маркировку (в соответствии с передаваемой фразой).
+
+![](image/2.png){width=70%}
+
+## Расширяем наш граф, задавая промежуточные состояния.
+
+![](image/3.png){width=70%}
+
+## Декларируем все необходимое в меню слева.
+
+![](image/4.png){width=70%}
+
+## Окончательно оформляем полную модель системы.
+
+![](image/5.png){width=70%}
+
+## Запускаем модель, все работает коректно, что видно на скриншоте.
+
+![](image/6.png){width=70%}
+
+## Выполняем упражнение. Строим граф пространства состояний. В конце отчета можно так же ознакомиться с отчетом о пространстве состояний.
+
+![](image/7.png){width=70%}
+
+# Результаты
+
+Мы ознакомились с примером моделирования простого протокола передачи данных в CPNTools.
+
+Получили отчет по работе модели, с которым можно ознакомиться в моем гитхабе.
